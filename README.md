@@ -1,39 +1,15 @@
-# ableneo-code-review-vue
+# Code Review Vue.js
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+Clone and initialize the repo:
 
 ```sh
+git clone https://github.com/arturmuller/code-review-vue.git
+cd ableneo-code-review
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+Check out the following files:
 
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- User List — [`src/components/UserListFilter.vue`](./src/components/UserListFilter.vue)
+- Data Fetcher — [`src/components/CoffeeFetcher.vue`](./src/components/CoffeeFetcher.vue)

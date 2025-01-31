@@ -1,23 +1,19 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue"
+import { onMounted, ref } from "vue";
+import { fetch } from "../utils/slowFetch";
 
-const props = defineProps<{ kind: string }>()
+const props = defineProps<{ kind: "cold" | "hot" }>();
 
-const items = ref<{ id: string; name: string }[] | null>()
+const items = ref<{ id: string; name: string }[] | null>();
 
 onMounted(async () => {
-  const response = await fetch(`https://api.sampleapis.com/coffee/${props.kind}`);
-  items.value = await response.json()
-})
-
+  const response = await fetch(`/${props.kind}.json`);
+  items.value = await response.json();
+});
 </script>
 
 <template>
-  <div>
-    <h2>Data</h2>
-
-    <ul v-if="items">
-      <li v-for="item in items" :key="item.id">{{ item.name }}</li>
-    </ul>
-  </div>
+  <ul v-if="items">
+    <li v-for="item in items" :key="item.id">{{ item.name }}</li>
+  </ul>
 </template>

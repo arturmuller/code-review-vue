@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 type User = {
   id: string;
   name: string;
@@ -8,14 +10,25 @@ type User = {
 const props = defineProps<{
   users: User[];
 }>();
+
+const filteredUsers = ref<User[]>(props.users);
+
+const handleInput = (event: Event) => {
+  const element = event.target as HTMLInputElement;
+  const value = element.value;
+
+  filteredUsers.value = props.users.filter((user) => user.name === value);
+};
 </script>
 
 <template>
   <div>
-    <input type="text" placeholder="Search users by name or email" />
+    <h2>User List Filter</h2>
+
+    <input type="text" placeholder="Search users by name or email" @input="handleInput" />
 
     <ul>
-      <li v-for="user in props.users" :key="user.name">
+      <li v-for="user in filteredUsers" :key="user.name">
         <div>Name: {{ user.name }}</div>
         <div>Email: {{ user.email }}</div>
       </li>

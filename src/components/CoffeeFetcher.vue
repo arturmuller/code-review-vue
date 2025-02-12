@@ -13,6 +13,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <h2>Coffee Fetcher</h2>
   <ul v-if="items">
     <li v-for="item in items" :key="item.id">{{ item.name }}</li>
   </ul>

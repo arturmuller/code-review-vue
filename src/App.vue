@@ -1,13 +1,21 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { ref } from "vue";
 import CoffeeFetcher from "./components/CoffeeFetcher.vue";
 import UserListFilter from "./components/UserListFilter.vue";
 
-const users = reactive([
-  { id: "a", name: "Mary", email: "mary@example.com" },
-  { id: "b", name: "John", email: "john@example.com" },
-  { id: "c", name: "Alex", email: "alex@example.com" },
-]);
+const usersA = [
+  { id: "a", name: "Marie", email: "mary@seznam.cz" },
+  { id: "b", name: "John", email: "john@gmail.com" },
+  { id: "c", name: "Alex", email: "alex@hotmail.com" },
+];
+
+const usersB = [
+  { id: "a", name: "Russel", email: "russel@seznam.cz" },
+  { id: "b", name: "Taylor", email: "taylor@gmail.com" },
+  { id: "c", name: "Kyle", email: "kyle@hotmail.com" },
+];
+
+const users = ref(usersA);
 
 const kind = ref<"hot" | "cold">("hot");
 </script>
@@ -16,15 +24,22 @@ const kind = ref<"hot" | "cold">("hot");
   <div>
     <h1>Code Review (Vue.js)</h1>
 
-    <h2>User List Filter</h2>
+    <div>
+      <h2>State controls:</h2>
+
+      <div>
+        Users list:
+        <button type="button" @click="users = usersA">User set A</button>
+        <button type="button" @click="users = usersB">User set B</button>
+      </div>
+      <div>
+        Coffee kind:
+        <button type="button" @click="kind = 'hot'">Hot</button>
+        <button type="button" @click="kind = 'cold'">Cold</button>
+      </div>
+    </div>
 
     <UserListFilter :users="users" />
-
-    <h2>Coffee Fetcher</h2>
-    <div>
-      <button type="button" @click="kind = 'hot'">Hot</button>
-      <button type="button" @click="kind = 'cold'">Cold</button>
-    </div>
 
     <CoffeeFetcher :kind="kind" />
   </div>
